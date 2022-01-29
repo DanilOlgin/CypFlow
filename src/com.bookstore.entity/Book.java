@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.Arrays;
+import java.util.Collection;
 
 @Entity
 public class Book {
@@ -36,8 +37,13 @@ public class Book {
     @Column(name = "updated_on")
     private Timestamp updatedOn;
     @Basic
-    @Column(name = "category_id")
+    @Column(name = "category_id", insertable = false, updatable = false)
     private String categoryId;
+    @ManyToOne
+    @JoinColumn(name = "category_id", referencedColumnName = "category_id")
+    private Category categoryByCategoryId;
+    @OneToMany(mappedBy = "bookByBookId")
+    private Collection<Review> reviewsByBookId;
 
     public int getBookId() {
         return bookId;
@@ -157,5 +163,21 @@ public class Book {
         result = 31 * result + (updatedOn != null ? updatedOn.hashCode() : 0);
         result = 31 * result + (categoryId != null ? categoryId.hashCode() : 0);
         return result;
+    }
+
+    public Category getCategoryByCategoryId() {
+        return categoryByCategoryId;
+    }
+
+    public void setCategoryByCategoryId(Category categoryByCategoryId) {
+        this.categoryByCategoryId = categoryByCategoryId;
+    }
+
+    public Collection<Review> getReviewsByBookId() {
+        return reviewsByBookId;
+    }
+
+    public void setReviewsByBookId(Collection<Review> reviewsByBookId) {
+        this.reviewsByBookId = reviewsByBookId;
     }
 }

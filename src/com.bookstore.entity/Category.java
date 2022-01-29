@@ -1,16 +1,18 @@
 package com.bookstore.entity;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class Category {
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "category_id")
     private String categoryId;
     @Basic
     @Column(name = "name")
     private String name;
+    @OneToMany(mappedBy = "categoryByCategoryId")
+    private Collection<Book> booksByCategoryId;
 
     public String getCategoryId() {
         return categoryId;
@@ -46,5 +48,13 @@ public class Category {
         int result = categoryId != null ? categoryId.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
+    }
+
+    public Collection<Book> getBooksByCategoryId() {
+        return booksByCategoryId;
+    }
+
+    public void setBooksByCategoryId(Collection<Book> booksByCategoryId) {
+        this.booksByCategoryId = booksByCategoryId;
     }
 }

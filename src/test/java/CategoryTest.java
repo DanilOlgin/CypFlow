@@ -1,3 +1,5 @@
+import com.bookstore.entity.Category;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -5,9 +7,9 @@ import javax.persistence.Persistence;
 public class CategoryTest {
         public static void main(String[] args) {
 
-            com.bookstore.entity.Category category = new com.bookstore.entity.Category();
-            category.setName("Fiction");
-
+            Category category = new Category();
+            category.setName("Sci-Fi");
+            category.setCategoryId("1");
 
             EntityManagerFactory entityManagerFactory =
                     Persistence.createEntityManagerFactory("BookStoreWebsite");

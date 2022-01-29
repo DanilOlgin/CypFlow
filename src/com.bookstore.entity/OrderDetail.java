@@ -1,13 +1,12 @@
 package com.bookstore.entity;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Entity
-@Table(name = "order_detail", schema = "bookstoredb")
+@Table(name = "order_detail", schema = "bookstoredb", catalog = "")
 public class OrderDetail {
-    @Id
     @Basic
+    @Id
     @Column(name = "order_id")
     private Integer orderId;
     @Basic
@@ -61,8 +60,8 @@ public class OrderDetail {
 
         if (quantity != that.quantity) return false;
         if (Double.compare(that.subTotal, subTotal) != 0) return false;
-        if (!Objects.equals(orderId, that.orderId)) return false;
-        if (!Objects.equals(bookId, that.bookId)) return false;
+        if (orderId != null ? !orderId.equals(that.orderId) : that.orderId != null) return false;
+        if (bookId != null ? !bookId.equals(that.bookId) : that.bookId != null) return false;
 
         return true;
     }

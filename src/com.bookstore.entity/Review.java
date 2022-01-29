@@ -27,6 +27,12 @@ public class Review {
     @Basic
     @Column(name = "review_time")
     private Timestamp reviewTime;
+    @ManyToOne
+    @JoinColumn(name = "book_id", referencedColumnName = "book_id", insertable = false, updatable = false)
+    private Book bookByBookId;
+    @ManyToOne
+    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", insertable = false, updatable = false)
+    private Customer customerByCustomerId;
 
     public int getReviewId() {
         return reviewId;
@@ -112,5 +118,21 @@ public class Review {
         result = 31 * result + (comment != null ? comment.hashCode() : 0);
         result = 31 * result + (reviewTime != null ? reviewTime.hashCode() : 0);
         return result;
+    }
+
+    public Book getBookByBookId() {
+        return bookByBookId;
+    }
+
+    public void setBookByBookId(Book bookByBookId) {
+        this.bookByBookId = bookByBookId;
+    }
+
+    public Customer getCustomerByCustomerId() {
+        return customerByCustomerId;
+    }
+
+    public void setCustomerByCustomerId(Customer customerByCustomerId) {
+        this.customerByCustomerId = customerByCustomerId;
     }
 }

@@ -2,6 +2,7 @@ package com.bookstore.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Collection;
 
 @Entity
 public class Customer {
@@ -36,6 +37,10 @@ public class Customer {
     @Basic
     @Column(name = "date_registered")
     private Timestamp dateRegistered;
+    @OneToMany(mappedBy = "customerByCustomerId")
+    private Collection<BookOrder> bookOrdersByCustomerId;
+    @OneToMany(mappedBy = "customerByCustomerId")
+    private Collection<Review> reviewsByCustomerId;
 
     public int getCustomerId() {
         return customerId;
@@ -153,5 +158,21 @@ public class Customer {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (dateRegistered != null ? dateRegistered.hashCode() : 0);
         return result;
+    }
+
+    public Collection<BookOrder> getBookOrdersByCustomerId() {
+        return bookOrdersByCustomerId;
+    }
+
+    public void setBookOrdersByCustomerId(Collection<BookOrder> bookOrdersByCustomerId) {
+        this.bookOrdersByCustomerId = bookOrdersByCustomerId;
+    }
+
+    public Collection<Review> getReviewsByCustomerId() {
+        return reviewsByCustomerId;
+    }
+
+    public void setReviewsByCustomerId(Collection<Review> reviewsByCustomerId) {
+        this.reviewsByCustomerId = reviewsByCustomerId;
     }
 }

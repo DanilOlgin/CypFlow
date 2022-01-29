@@ -34,6 +34,9 @@ public class BookOrder {
     @Basic
     @Column(name = "status")
     private String status;
+    @ManyToOne
+    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", nullable = false, insertable = false, updatable = false)
+    private Customer customerByCustomerId;
 
     public int getOrderId() {
         return orderId;
@@ -146,5 +149,13 @@ public class BookOrder {
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + (status != null ? status.hashCode() : 0);
         return result;
+    }
+
+    public Customer getCustomerByCustomerId() {
+        return customerByCustomerId;
+    }
+
+    public void setCustomerByCustomerId(Customer customerByCustomerId) {
+        this.customerByCustomerId = customerByCustomerId;
     }
 }

@@ -1,22 +1,20 @@
-<?xml version='1.0' encoding='utf-8'?>
-<!DOCTYPE hibernate-configuration PUBLIC
-    "-//Hibernate/Hibernate Configuration DTD//EN"
-    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
-<hibernate-configuration>
-  <session-factory>
-    <property name="connection.url">jdbc:mysql://Localhost:3306/bookstoredb</property>
-    <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-      <mapping class="com.bookstore.entity.Book"/>
-      <mapping class="com.bookstore.entity.BookOrder"/>
-      <mapping class="com.bookstore.entity.Category"/>
-      <mapping class="com.bookstore.entity.Customer"/>
-      <mapping class="com.bookstore.entity.OrderDetail"/>
-      <mapping class="com.bookstore.entity.Review"/>
-      <mapping class="com.bookstore.entity.Users"/>
-      <!-- <property name="connection.username"/> -->
-    <!-- <property name="connection.password"/> -->
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
+          http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
+             version="2.1">
 
-    <!-- DB schema will be updated if needed -->
-    <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
-  </session-factory>
-</hibernate-configuration>
+    <persistence-unit name="BookStoreWebsite">
+        <properties>
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost:3306/bookstoredb?autoReconnect=true" />
+            <property name="javax.persistence.jdbc.user" value="root" />
+            <property name="javax.persistence.jdbc.password" value="password" />
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
+            <property name="hibernate.show_sql" value="true" />
+            <property name="hibernate.format_sql" value="true" />
+        </properties>
+    </persistence-unit>
+
+</persistence>

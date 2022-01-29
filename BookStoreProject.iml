@@ -4,10 +4,11 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="META-INF:persistence.xml" value="5dd57afc-4e72-4437-96ba-5a9a1a26e21b" />
+          <unit-entry name="META-INF:hibernate.cfg.xml" value="5dd57afc-4e72-4437-96ba-5a9a1a26e21b" />
         </datasource-map>
         <naming-strategy-map />
-        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/persistence.xml" />
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/hibernate.cfg.xml" />
+        <deploymentDescriptor name="hibernate.cfg.xml" url="file://$MODULE_DIR$/src/main/resources/META-INF/hibernate1.cfg.xml" />
       </configuration>
     </facet>
     <facet type="web" name="Web">
