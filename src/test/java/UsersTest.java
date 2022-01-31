@@ -1,3 +1,5 @@
+import com.bookstore.entity.Users;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -6,7 +8,7 @@ import javax.persistence.Persistence;
 public class UsersTest {
     public static void main(String[] args) {
 
-        com.bookstore.entity.Users user = new com.bookstore.entity.Users();
+        Users user = new Users();
         user.setEmail("danilolgin1@gmail.com");
         user.setFullName("Daniil Olgin");
         user.setPassword("Hello Password!");
