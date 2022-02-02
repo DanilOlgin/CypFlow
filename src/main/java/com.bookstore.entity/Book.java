@@ -37,11 +37,13 @@ public class Book {
     @Column(name = "updated_on")
     private Timestamp updatedOn;
     @Basic
-    @Column(name = "category_id", insertable = false, updatable = false)
+    @Column(name = "category_id")
     private String categoryId;
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "category_id")
     private Category categoryByCategoryId;
+    @OneToMany(mappedBy = "bookByBookId")
+    private Collection<OrderDetail> orderDetailsByBookId;
     @OneToMany(mappedBy = "bookByBookId")
     private Collection<Review> reviewsByBookId;
 
@@ -171,6 +173,14 @@ public class Book {
 
     public void setCategoryByCategoryId(Category categoryByCategoryId) {
         this.categoryByCategoryId = categoryByCategoryId;
+    }
+
+    public Collection<OrderDetail> getOrderDetailsByBookId() {
+        return orderDetailsByBookId;
+    }
+
+    public void setOrderDetailsByBookId(Collection<OrderDetail> orderDetailsByBookId) {
+        this.orderDetailsByBookId = orderDetailsByBookId;
     }
 
     public Collection<Review> getReviewsByBookId() {

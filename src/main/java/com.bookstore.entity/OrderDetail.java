@@ -18,6 +18,12 @@ public class OrderDetail {
     @Basic
     @Column(name = "sub_total")
     private double subTotal;
+    @ManyToOne
+    @JoinColumn(name = "order_id", referencedColumnName = "order_id")
+    private BookOrder bookOrderByOrderId;
+    @ManyToOne
+    @JoinColumn(name = "book_id", referencedColumnName = "book_id")
+    private Book bookByBookId;
 
     public Integer getOrderId() {
         return orderId;
@@ -76,5 +82,21 @@ public class OrderDetail {
         temp = Double.doubleToLongBits(subTotal);
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         return result;
+    }
+
+    public BookOrder getBookOrderByOrderId() {
+        return bookOrderByOrderId;
+    }
+
+    public void setBookOrderByOrderId(BookOrder bookOrderByOrderId) {
+        this.bookOrderByOrderId = bookOrderByOrderId;
+    }
+
+    public Book getBookByBookId() {
+        return bookByBookId;
+    }
+
+    public void setBookByBookId(Book bookByBookId) {
+        this.bookByBookId = bookByBookId;
     }
 }

@@ -28,10 +28,10 @@ public class Review {
     @Column(name = "review_time")
     private Timestamp reviewTime;
     @ManyToOne
-    @JoinColumn(name = "book_id", referencedColumnName = "book_id", insertable = false, updatable = false)
+    @JoinColumn(name = "book_id", referencedColumnName = "book_id")
     private Book bookByBookId;
     @ManyToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", insertable = false, updatable = false)
+    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id")
     private Customer customerByCustomerId;
 
     public int getReviewId() {

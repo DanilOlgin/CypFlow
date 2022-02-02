@@ -6,7 +6,7 @@
   <session-factory>
     <property name="connection.url">jdbc:mysql://Localhost:3306/bookstoredb</property>
     <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-    <mapping class="com.bookstore.entity.Book"/>
+      <mapping class="com.bookstore.entity.Book"/>
     <mapping class="com.bookstore.entity.BookOrder"/>
     <mapping class="com.bookstore.entity.Category"/>
     <mapping class="com.bookstore.entity.Customer"/>

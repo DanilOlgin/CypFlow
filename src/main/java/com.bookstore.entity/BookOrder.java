@@ -2,6 +2,7 @@ package com.bookstore.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Collection;
 
 @Entity
 @Table(name = "book_order", schema = "bookstoredb")
@@ -35,8 +36,10 @@ public class BookOrder {
     @Column(name = "status")
     private String status;
     @ManyToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", nullable = false)
     private Customer customerByCustomerId;
+    @OneToMany(mappedBy = "bookOrderByOrderId")
+    private Collection<OrderDetail> orderDetailsByOrderId;
 
     public int getOrderId() {
         return orderId;
@@ -157,5 +160,13 @@ public class BookOrder {
 
     public void setCustomerByCustomerId(Customer customerByCustomerId) {
         this.customerByCustomerId = customerByCustomerId;
+    }
+
+    public Collection<OrderDetail> getOrderDetailsByOrderId() {
+        return orderDetailsByOrderId;
+    }
+
+    public void setOrderDetailsByOrderId(Collection<OrderDetail> orderDetailsByOrderId) {
+        this.orderDetailsByOrderId = orderDetailsByOrderId;
     }
 }
