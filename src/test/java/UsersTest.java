@@ -1,4 +1,4 @@
-import com.bookstore.entity.Users;
+import com.photostore.entity.Users;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -15,7 +15,7 @@ public class UsersTest {
 
 
         EntityManagerFactory entityManagerFactory =
-                Persistence.createEntityManagerFactory("BookStoreWebsite");
+                Persistence.createEntityManagerFactory("PhotoStoreWebsite");
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
         entityManager.getTransaction().begin();

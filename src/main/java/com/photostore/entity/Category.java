@@ -1,25 +1,25 @@
-package com.bookstore.entity;
+package com.photostore.entity;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "category_id")
-    private String categoryId;
+    private int categoryId;
     @Basic
     @Column(name = "name")
     private String name;
-    @OneToMany(mappedBy = "categoryByCategoryId")
-    private Collection<Book> booksByCategoryId;
+    @ManyToOne
+    @JoinColumn(name = "name", referencedColumnName = "category_name", nullable = false)
+    private Photo photoByName;
 
-    public String getCategoryId() {
+    public int getCategoryId() {
         return categoryId;
     }
 
-    public void setCategoryId(String categoryId) {
+    public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
     }
 
@@ -38,7 +38,7 @@ public class Category {
 
         Category category = (Category) o;
 
-        if (categoryId != null ? !categoryId.equals(category.categoryId) : category.categoryId != null) return false;
+        if (categoryId != category.categoryId) return false;
         if (name != null ? !name.equals(category.name) : category.name != null) return false;
 
         return true;
@@ -46,16 +46,16 @@ public class Category {
 
     @Override
     public int hashCode() {
-        int result = categoryId != null ? categoryId.hashCode() : 0;
+        int result = categoryId;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
 
-    public Collection<Book> getBooksByCategoryId() {
-        return booksByCategoryId;
+    public Photo getPhotoByName() {
+        return photoByName;
     }
 
-    public void setBooksByCategoryId(Collection<Book> booksByCategoryId) {
-        this.booksByCategoryId = booksByCategoryId;
+    public void setPhotoByName(Photo photoByName) {
+        this.photoByName = photoByName;
     }
 }

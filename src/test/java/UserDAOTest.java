@@ -1,5 +1,5 @@
-import com.bookstore.dao.UserDAO;
-import com.bookstore.entity.Users;
+import com.photostore.dao.UserDAO;
+import com.photostore.entity.Users;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -9,6 +9,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 
@@ -22,7 +23,7 @@ public class UserDAOTest {
     public static void setUp() {
         user = new Users();
         entityManagerFactory =
-                Persistence.createEntityManagerFactory("BookStoreWebsite");
+                Persistence.createEntityManagerFactory("PhotoStoreWebsite");
         entityManager = entityManagerFactory.createEntityManager();
 
         userDAO = new UserDAO(entityManager);
@@ -55,7 +56,7 @@ public class UserDAOTest {
         user = userDAO.update(user);
 
 
-        assertTrue(user.getUserId()==1);
+        assertEquals(1, user.getUserId());
     }
 
     @AfterClass

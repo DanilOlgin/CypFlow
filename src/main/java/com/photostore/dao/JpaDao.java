@@ -1,4 +1,4 @@
-package com.bookstore.dao;
+package com.photostore.dao;
 
 import javax.persistence.EntityManager;
 

@@ -1,4 +1,4 @@
-import com.bookstore.entity.Category;
+import com.photostore.entity.Category;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -9,10 +9,10 @@ public class CategoryTest {
 
             Category category = new Category();
             category.setName("Sci-Fi");
-            category.setCategoryId("1");
+            category.setCategoryId(1);
 
             EntityManagerFactory entityManagerFactory =
-                    Persistence.createEntityManagerFactory("BookStoreWebsite");
+                    Persistence.createEntityManagerFactory("PhotoStoreWebsite");
 
             EntityManager entityManager = entityManagerFactory.createEntityManager();
             entityManager.getTransaction().begin();

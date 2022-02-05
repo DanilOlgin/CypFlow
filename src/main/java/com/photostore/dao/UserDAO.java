@@ -1,6 +1,6 @@
-package com.bookstore.dao;
+package com.photostore.dao;
 
-import com.bookstore.entity.Users;
+import com.photostore.entity.Users;
 
 import javax.persistence.EntityManager;
 import java.util.List;

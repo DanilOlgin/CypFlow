@@ -5,7 +5,16 @@
           http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"
              version="2.1">
 
-    <persistence-unit name="BookStoreWebsite">
+    <persistence-unit name="PhotoStoreWebsite">
+        <class>com.photostore.entity.Category</class>
+        <class>com.photostore.entity.CustomerDetails</class>
+        <class>com.photostore.entity.OrderDetails</class>
+        <class>com.photostore.entity.OrderPhoto</class>
+        <class>com.photostore.entity.Photo</class>
+        <class>com.photostore.entity.PhotoComments</class>
+        <class>com.photostore.entity.PhotoTags</class>
+        <class>com.photostore.entity.Users</class>
+        <class>com.photostore.entity.UsersRoles</class>
         <properties>
             <property name="javax.persistence.jdbc.url"
                       value="jdbc:mysql://localhost:3306/bookstoredb?autoReconnect=true" />
@@ -14,6 +23,8 @@
             <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver" />
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
+            <property name="hibernate.connection.url" value="jdbc:mysql://Localhost:3306/photostore"/>
+            <property name="hibernate.connection.driver_class" value="com.mysql.cj.jdbc.Driver"/>
         </properties>
     </persistence-unit>
 
