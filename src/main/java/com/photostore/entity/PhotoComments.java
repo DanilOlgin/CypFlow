@@ -1,12 +1,12 @@
 package com.photostore.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
-import java.util.Collection;
 
 @Entity
 @Table(name = "photo_comments", schema = "photostore", catalog = "")
-public class PhotoComments {
+public class PhotoComments implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "photo_id")
@@ -29,8 +29,6 @@ public class PhotoComments {
     @OneToOne
     @JoinColumn(name = "photo_id", referencedColumnName = "photo_id", nullable = false)
     private Photo photoByPhotoId;
-    @OneToMany(mappedBy = "photoCommentsByUserName")
-    private Collection<Users> CommentsByUserName;
 
     public int getPhotoId() {
         return photoId;
@@ -116,13 +114,5 @@ public class PhotoComments {
 
     public void setPhotoByPhotoId(Photo photoByPhotoId) {
         this.photoByPhotoId = photoByPhotoId;
-    }
-
-    public Collection<Users> getCommentsByUserName() {
-        return CommentsByUserName;
-    }
-
-    public void setCommentsByUserName(Collection<Users> commentsByUserName) {
-        CommentsByUserName = commentsByUserName;
     }
 }

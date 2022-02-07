@@ -1,7 +1,6 @@
 package com.photostore.entity;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 public class Users {
@@ -22,10 +21,10 @@ public class Users {
     @Column(name = "user_name")
     private String userName;
     @ManyToOne
-    @JoinColumn(name = "user_name", referencedColumnName = "commentator_name", nullable = false)
+    @JoinColumn(name = "user_name", referencedColumnName = "commentator_name", insertable = false, updatable = false)
     private PhotoComments photoCommentsByUserName;
-    @OneToMany(mappedBy = "usersByUserId")
-    private Collection<UsersRoles> usersRolesByUserId;
+    @OneToOne(mappedBy = "usersByUserId")
+    private UsersRoles usersRolesByUserId;
 
     public int getUserId() {
         return userId;
@@ -101,11 +100,11 @@ public class Users {
         this.photoCommentsByUserName = photoCommentsByUserName;
     }
 
-    public Collection<UsersRoles> getUsersRolesByUserId() {
+    public UsersRoles getUsersRolesByUserId() {
         return usersRolesByUserId;
     }
 
-    public void setUsersRolesByUserId(Collection<UsersRoles> usersRolesByUserId) {
+    public void setUsersRolesByUserId(UsersRoles usersRolesByUserId) {
         this.usersRolesByUserId = usersRolesByUserId;
     }
 }

@@ -24,8 +24,6 @@ public class Photo {
     private String categoryName;
     @OneToMany(mappedBy = "photoByPhotoId")
     private Collection<OrderDetails> orderDetailsByPhotoId;
-    @OneToMany(mappedBy = "photoByName")
-    private Collection<Category> photoByName;
     @OneToOne(mappedBy = "photoByPhotoId")
     private PhotoComments photoCommentsByPhotoId;
     @OneToOne(mappedBy = "photoByPhotoId")
@@ -103,14 +101,6 @@ public class Photo {
 
     public void setOrderDetailsByPhotoId(Collection<OrderDetails> orderDetailsByPhotoId) {
         this.orderDetailsByPhotoId = orderDetailsByPhotoId;
-    }
-
-    public Collection<Category> getPhotoByName() {
-        return photoByName;
-    }
-
-    public void setPhotoByName(Collection<Category> photoByName) {
-        this.photoByName = photoByName;
     }
 
     public PhotoComments getPhotoCommentsByPhotoId() {

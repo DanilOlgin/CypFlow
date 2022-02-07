@@ -12,7 +12,7 @@ public class Category {
     @Column(name = "name")
     private String name;
     @ManyToOne
-    @JoinColumn(name = "name", referencedColumnName = "category_name", nullable = false)
+    @JoinColumn(name = "name", referencedColumnName = "category_name", nullable = false, insertable = false, updatable = false)
     private Photo photoByName;
 
     public int getCategoryId() {

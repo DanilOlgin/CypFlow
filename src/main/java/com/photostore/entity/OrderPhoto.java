@@ -15,7 +15,7 @@ public class OrderPhoto {
     @OneToOne(mappedBy = "orderPhotoByOrderId")
     private OrderDetails orderDetailsByOrderId;
     @ManyToOne
-    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", nullable = false)
+    @JoinColumn(name = "customer_id", referencedColumnName = "customer_id", nullable = false, insertable = false, updatable = false)
     private CustomerDetails customerDetailsByCustomerId;
 
     public int getOrderId() {

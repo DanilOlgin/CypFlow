@@ -10,7 +10,7 @@ public class OrderDetails {
     @Column(name = "order_id")
     private int orderId;
     @Basic
-    @Column(name = "photo_id")
+    @Column(name = "photo_id", insertable = false, updatable = false)
     private int photoId;
     @Basic
     @Column(name = "photo_size")

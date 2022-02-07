@@ -5,14 +5,14 @@ import javax.persistence.*;
 @Entity
 @Table(name = "users_roles", schema = "photostore", catalog = "")
 public class UsersRoles {
-    @Basic
-    @Column(name = "user_id")
-    private int userId;
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
+    @Column(name = "user_id")
+    private int userId;
+    @Basic
     @Column(name = "user_role")
     private String userRole;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "user_id", referencedColumnName = "user_id", nullable = false)
     private Users usersByUserId;
 
