@@ -9,8 +9,9 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.persistence.PersistenceException;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import java.util.List;
+
+import static org.junit.Assert.*;
 
 
 public class UserDAOTest {
@@ -41,7 +42,7 @@ public class UserDAOTest {
         assertTrue(user.getUserId() > 0);
     }
 
-    @Test (expected = PersistenceException.class)
+    @Test(expected = PersistenceException.class)
     public void testCreateUsersFilesNotSet() {
         user = userDAO.create(user);
 
@@ -50,14 +51,62 @@ public class UserDAOTest {
 
     @Test
     public void testUpdateUsers() {
-        user.setUserId(1);
-        user.setEmail("updatedemail@gmail.com");
+        user.setUserId(5);
+
+        user.setEmail("updatedemail1@gmail.com");
         user.setPassword("updatedPassword");
         user.setFullName("New Name");
+        user.setUserName("UpdatedNickName1");
         user = userDAO.update(user);
 
 
-        assertEquals(1, user.getUserId());
+        assertEquals(5, user.getUserId());
+    }
+
+    @Test
+    public void testGetUsersFound() {
+        Integer userId = 1;
+        Users user = userDAO.get(userId);
+        if (user != null)
+            System.out.println(user.getUserId() + " " + user.getUserName() + " " + user.getFullName() + " " + user.getEmail());
+        assertNotNull(user);
+    }
+
+    @Test
+    public void testGetUsersNotFound(){
+        Integer userId = 100;
+        Users user = userDAO.get(userId);
+
+        assertNull(user);
+    }
+
+    @Test
+    public void testDeleteUsers() {
+        Integer userId = 8;
+        userDAO.delete(userId);
+
+        Users user = userDAO.get(userId);
+        assertNull(user);
+    }
+
+    @Test (expected = Exception.class)
+    public void testDeleteNonExistingUsers() {
+        Integer userId = 8;
+        userDAO.delete(userId);
+
+    }
+
+    @Test
+    public void testListAll() {
+        List<Users> usersList = userDAO.listAll();
+        assertTrue(usersList.size() > 0);
+    }
+
+    @Test
+    public void testCountAll() {
+        long a = userDAO.count();
+        System.out.println(a);
+        assertTrue(a>0);
     }
 
     @AfterClass

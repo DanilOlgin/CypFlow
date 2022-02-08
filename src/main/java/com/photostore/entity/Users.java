@@ -3,6 +3,11 @@ package com.photostore.entity;
 import javax.persistence.*;
 
 @Entity
+@NamedQueries({
+        @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u ORDER BY u.fullName"),
+        @NamedQuery(name = "Users.countAll", query = "SELECT COUNT(*) FROM Users u")
+})
+
 public class Users {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
