@@ -3,7 +3,9 @@ package com.photostore.dao;
 import com.photostore.entity.Users;
 
 import javax.persistence.EntityManager;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class UserDAO extends JpaDao<Users> implements GenericDAO<Users>{
 
@@ -24,6 +26,25 @@ public class UserDAO extends JpaDao<Users> implements GenericDAO<Users>{
     @Override
     public Users get(Object userId) {
         return super.find(Users.class, userId);
+    }
+
+    public Users findByEmail(String email) {
+        List<Users> usersList = super.findWithNamedQuery("Users.findByEmail", "email", email);
+
+        if (usersList != null && usersList.size() > 0) {
+            return usersList.get(0);
+        }
+        return null;
+    }
+
+
+    public boolean checkLogin(String email, String password) {
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("email", email);
+        parameters.put("password", password);
+
+        List<Users> usersList = super.findWithNamedQuery("Users.checkLogin", parameters);
+        return usersList.size() == 1;
     }
 
     @Override

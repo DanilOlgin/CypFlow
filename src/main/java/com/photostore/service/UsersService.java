@@ -17,6 +17,7 @@ public class UsersService {
         userDAO = new UserDAO(entityManager);
     }
 
+
     public List<Users> listUsers() {
         return userDAO.listAll();
     }

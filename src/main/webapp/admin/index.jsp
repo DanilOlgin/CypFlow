@@ -9,7 +9,7 @@
 <hr width="60%"/>
 <h2 align="center">Admin Dashboard</h2>
 <div align="center">
-  <a href="list_users.jsp">USERS</a> |
+  <a href="list_users">USERS</a> |
   <a href="categories">CATEGORIES</a> |
   <a href="photos">PHOTOS</a> |
   <a href="customers">CUSTOMERS</a> |

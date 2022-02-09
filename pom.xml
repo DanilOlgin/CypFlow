@@ -9,9 +9,9 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>war</packaging>
 
-  <name>BookStoreProject Maven Webapp</name>
+  <name>PhotoStoreWebsite</name>
   <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+  <url>http://localhost:8080/photostoreWebsite</url>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -30,11 +30,27 @@
       <groupId>jspapi</groupId>
       <artifactId>jsp-api</artifactId>
       <version>2.0</version>
+      <scope>provided</scope>
     </dependency>
+
+
+    <dependency>
+      <groupId>jakarta.servlet.jsp.jstl</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl-api</artifactId>
+      <version>2.0.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.glassfish.web</groupId>
+      <artifactId>jakarta.servlet.jsp.jstl</artifactId>
+      <version>2.0.0</version>
+    </dependency>
+
+
     <dependency>
       <groupId>jakarta.servlet</groupId>
       <artifactId>jakarta.servlet-api</artifactId>
       <version>5.0.0</version>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>junit</groupId>

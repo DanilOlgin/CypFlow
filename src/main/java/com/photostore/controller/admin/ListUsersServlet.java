@@ -12,7 +12,7 @@ import java.util.List;
 @WebServlet("/admin/list_users")
 public class ListUsersServlet extends HttpServlet {
 
-    ListUsersServlet() {
+    public ListUsersServlet() {
         super();
     }
 
@@ -22,7 +22,6 @@ public class ListUsersServlet extends HttpServlet {
         List<Users> usersList = usersService.listUsers();
 
         request.setAttribute("listUsers", usersList);
-
         request.getRequestDispatcher("list_users.jsp");
         RequestDispatcher requestDispatcher = request.getRequestDispatcher("list_users.jsp");
         requestDispatcher.forward(request, response);

@@ -93,12 +93,21 @@ public class UserDAOTest {
     public void testDeleteNonExistingUsers() {
         Integer userId = 8;
         userDAO.delete(userId);
+    }
 
+    @Test
+    public void testAdminLogin() {
+        String email = "0@gmail.com";
+        String password = "Hello Password!";
+        boolean result = userDAO.checkLogin(email, password);
+
+        assertTrue(result);
     }
 
     @Test
     public void testListAll() {
         List<Users> usersList = userDAO.listAll();
+        System.out.println(usersList.size());
         assertTrue(usersList.size() > 0);
     }
 
